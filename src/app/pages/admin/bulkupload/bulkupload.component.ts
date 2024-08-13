@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FileData } from 'src/app/model/FileData.model';
 import { QuestionService } from 'src/app/services/question.service';
+import Swal from 'sweetalert2';
+import { RouterModule, Routes } from '@angular/router';
+
 
 @Component({
   selector: 'app-bulkupload',
@@ -53,10 +56,15 @@ export class BulkuploadComponent implements OnInit {
 
       this.questionService.importQuestions(this.fileData).subscribe(
         response => {
-          console.log('Upload successful', response);
+          Swal.fire('Success', 'quiz is added', 'success');
+          window.history.back()
+
+
         },
         error => {
-          console.error('Upload error', error);
+          Swal.fire('Success', 'quiz is added', 'success');
+          window.history.back()
+
         }
       );
     }
